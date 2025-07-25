@@ -1,0 +1,24 @@
+{
+  "name": "yagi",
+  "version": "0.1.0",
+  "description": "Yet Another GitHub Interface",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheplu/YAGI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/sheplu/YAGI/issues"
+  },
+  "homepage": "https://github.com/sheplu/YAGI#readme"
+}
