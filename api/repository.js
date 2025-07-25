@@ -59,4 +59,4 @@ export async function getRepositoryTeams(owner, repository) {
         },
     });
     return request.json();
-}
+};
