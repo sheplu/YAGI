@@ -1,7 +1,8 @@
-import { getRepository, getRepositoryLanguages, listRepositories } from "./api/repository.js";
+import { getRepository, getRepositoryLanguages, getRepositoryTeams, listRepositories } from "./api/repository.js";
 
 export {
     getRepository,
     getRepositoryLanguages,
+    getRepositoryTeams,
     listRepositories
 }
