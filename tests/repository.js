@@ -1,8 +1,10 @@
-import { getRepository, listRepositories } from "../main.js";
+import { getRepository, getRepositoryLanguages, listRepositories } from "../main.js";
 import { writeFileSync } from "node:fs";
 
 const repo = await getRepository('sheplu', 'aws-safe-modules');
 console.log(repo)
+const repoLanguage = await getRepositoryLanguages('sheplu', 'aws-safe-modules');
+console.log(repoLanguage)
 
 const repos = await listRepositories('not-organisation');
 console.log(repos.length)

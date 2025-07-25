@@ -38,3 +38,14 @@ export async function listRepositories(owner) {
 		console.error(error);
 	}
 };
+
+export async function getRepositoryLanguages(owner, repository) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}/languages`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return request.json();
+};
