@@ -1,5 +1,6 @@
-import { getRepository } from "./api/repository.js";
+import { getRepository, listRepositories } from "./api/repository.js";
 
 export {
-    getRepository
+    getRepository,
+    listRepositories
 }
