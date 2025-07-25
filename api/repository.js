@@ -49,3 +49,14 @@ export async function getRepositoryLanguages(owner, repository) {
     });
     return request.json();
 };
+
+export async function getRepositoryTeams(owner, repository) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}/teams`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return request.json();
+}
