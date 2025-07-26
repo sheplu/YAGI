@@ -6,7 +6,6 @@ import {
 	listCollaborators,
 	listContributors,
 	listRepositories,
-	replaceTopics
 } from "../main.js";
 import { writeFileSync } from "node:fs";
 
