@@ -39,6 +39,32 @@ export async function listRepositories(owner) {
 	}
 };
 
+export async function listCollaborators(owner, repository, affiliation = 'all') {
+	try {
+		let page = 1;
+		let continueLoop = true;
+		const collaborators = [];
+		while (continueLoop) {
+			const url = `${GITHUB_URL}/repos/${owner}/${repository}/collaborators?per_page=100&page=${page}&affiliation=${affiliation}`;
+			const request = await fetch(url, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json',
+					Authorization: `Bearer ${token}`,
+				},
+			});
+            const result = await request.json();
+			collaborators.push(...result);
+			page++;
+			if (result.length < 100) {
+				continueLoop = false;
+			}
+		}
+		return collaborators;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 export async function getRepositoryLanguages(owner, repository) {
     const url = `${GITHUB_URL}/repos/${owner}/${repository}/languages`;
     const request = await fetch(url, {
