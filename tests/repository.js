@@ -4,6 +4,7 @@ import {
 	getRepositoryTeams,
 	getTopics,
 	listCollaborators,
+	listContributors,
 	listRepositories,
 	replaceTopics
 } from "../main.js";
@@ -19,9 +20,12 @@ console.log(repoTeams);
 const repoTopics = await getTopics('sheplu', 'aws-safe-modules');
 console.log(repoTopics);
 
-const repoCollaborators = await listCollaborators('repoCollaborators', 'aws-safe-modules');
-console.log(repoCollaborators);
+const repoCollaborators = await listCollaborators('sheplu', 'aws-safe-modules');
+console.log(repoCollaborators.length);
+
+const repoContributors = await listContributors('sheplu', 'aws-safe-modules');
+console.log(repoContributors.length);
 
 const repos = await listRepositories('not-organisation');
 console.log(repos.length);
-writeFileSync('./data', JSON.stringify(repoCollaborators));
+writeFileSync('./data', JSON.stringify(repos));

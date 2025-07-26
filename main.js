@@ -4,6 +4,7 @@ import {
     getRepositoryTeams,
 	getTopics,
 	listCollaborators,
+	listContributors,
     listRepositories,
 	replaceTopics,
 } from "./api/repository.js";
@@ -19,6 +20,7 @@ export {
     getRepositoryTeams,
 	getTopics,
 	listCollaborators,
+	listContributors,
     listRepositories,
 	replaceTopics,
 
