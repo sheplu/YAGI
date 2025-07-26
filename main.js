@@ -2,7 +2,9 @@ import {
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
-    listRepositories 
+	getTopics,
+    listRepositories,
+	replaceTopics,
 } from "./api/repository.js";
 
 import {
@@ -14,7 +16,9 @@ export {
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
+	getTopics,
     listRepositories,
+	replaceTopics,
 
     // organisation
     listTeams,
