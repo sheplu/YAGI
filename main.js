@@ -10,6 +10,7 @@ import {
 } from "./api/repository.js";
 
 import {
+	createRepository,
     listTeams
 } from "./api/organization.js";
 
@@ -25,5 +26,6 @@ export {
 	replaceTopics,
 
     // organisation
+	createRepository,
     listTeams,
 };
