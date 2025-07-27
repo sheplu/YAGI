@@ -14,6 +14,10 @@ import {
     listTeams
 } from "./api/organization.js";
 
+import {
+	createRepository as userCreateRepository,
+} from "./api/user.js";
+
 export {
     // repository
     getRepository,
@@ -28,4 +32,7 @@ export {
     // organisation
 	createRepository,
     listTeams,
+
+	// user
+	userCreateRepository
 };
