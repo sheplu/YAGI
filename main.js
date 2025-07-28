@@ -1,5 +1,6 @@
 import {
 	archiveRepository,
+	deleteRepository,
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
@@ -23,6 +24,7 @@ import {
 export {
     // repository
 	archiveRepository,
+	deleteRepository,
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
