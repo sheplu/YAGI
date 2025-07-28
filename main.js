@@ -9,7 +9,8 @@ import {
 	listContributors,
     listRepositories,
 	replaceTopics,
-	unarchiveRepository
+	unarchiveRepository,
+	updateRepository
 } from "./api/repository.js";
 
 import {
@@ -34,6 +35,7 @@ export {
     listRepositories,
 	replaceTopics,
 	unarchiveRepository,
+	updateRepository,
 
     // organisation
 	createRepository,

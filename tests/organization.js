@@ -1,4 +1,4 @@
-import { deleteRepository } from "../api/repository.js";
+import { deleteRepository, updateRepository } from "../api/repository.js";
 import { archiveRepository, createRepository, listTeams, unarchiveRepository } from "../main.js";
 
 const organizationTeam = await listTeams('not-organisation');
@@ -18,6 +18,12 @@ const createRepo = await createRepository('not-organisation', {
             "auto_init": true
         });
 console.log(createRepo);
+
+const updateRepo = await updateRepository('not-organisation', 'My-new-repo', {
+            "description": "This is your second repository",
+            "homepage": "https://google.com"
+        });
+console.log(updateRepo);
 
 const archive = await archiveRepository('not-organisation', 'My-new-repo')
 console.log(archive)
