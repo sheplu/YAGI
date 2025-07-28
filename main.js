@@ -1,4 +1,5 @@
 import {
+	archiveRepository,
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
@@ -7,6 +8,7 @@ import {
 	listContributors,
     listRepositories,
 	replaceTopics,
+	unarchiveRepository
 } from "./api/repository.js";
 
 import {
@@ -20,6 +22,7 @@ import {
 
 export {
     // repository
+	archiveRepository,
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
@@ -28,6 +31,7 @@ export {
 	listContributors,
     listRepositories,
 	replaceTopics,
+	unarchiveRepository,
 
     // organisation
 	createRepository,
