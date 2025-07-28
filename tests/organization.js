@@ -1,3 +1,4 @@
+import { deleteRepository } from "../api/repository.js";
 import { archiveRepository, createRepository, listTeams, unarchiveRepository } from "../main.js";
 
 const organizationTeam = await listTeams('not-organisation');
@@ -23,3 +24,6 @@ console.log(archive)
 
 const unarchive = await unarchiveRepository('not-organisation', 'My-new-repo')
 console.log(unarchive)
+
+const deleteRepo = await deleteRepository('not-organisation', 'My-new-repo')
+console.log(deleteRepo)

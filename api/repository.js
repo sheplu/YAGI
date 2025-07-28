@@ -41,6 +41,19 @@ export async function unarchiveRepository(owner, repository) {
     return request.json();
 };
 
+export async function deleteRepository(owner, repository) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+		method: 'DELETE'
+    });
+
+    return request;
+};
+
 export async function listRepositories(owner) {
 	try {
 		let page = 1;
