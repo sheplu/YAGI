@@ -13,6 +13,34 @@ export async function getRepository(owner, repository) {
     return request.json();
 };
 
+export async function archiveRepository(owner, repository) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+		body: JSON.stringify({ archived: true }),
+		method: 'PATCH'
+    });
+
+    return request.json();
+};
+
+export async function unarchiveRepository(owner, repository) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+		body: JSON.stringify({ archived: false }),
+		method: 'PATCH'
+    });
+
+    return request.json();
+};
+
 export async function listRepositories(owner) {
 	try {
 		let page = 1;

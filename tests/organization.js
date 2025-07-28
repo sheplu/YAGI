@@ -1,4 +1,4 @@
-import { createRepository, listTeams } from "../main.js";
+import { archiveRepository, createRepository, listTeams, unarchiveRepository } from "../main.js";
 
 const organizationTeam = await listTeams('not-organisation');
 console.log(organizationTeam.length);
@@ -17,3 +17,9 @@ const createRepo = await createRepository('not-organisation', {
             "auto_init": true
         });
 console.log(createRepo);
+
+const archive = await archiveRepository('not-organisation', 'My-new-repo')
+console.log(archive)
+
+const unarchive = await unarchiveRepository('not-organisation', 'My-new-repo')
+console.log(unarchive)
