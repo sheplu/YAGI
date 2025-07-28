@@ -41,6 +41,20 @@ export async function unarchiveRepository(owner, repository) {
     return request.json();
 };
 
+export async function updateRepository(owner, repository, body) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+		body: JSON.stringify(body),
+		method: 'PATCH'
+    });
+
+    return request.json();
+};
+
 export async function deleteRepository(owner, repository) {
     const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
     const request = await fetch(url, {
