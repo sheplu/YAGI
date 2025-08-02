@@ -1,5 +1,6 @@
 import {
 	getCodeowners,
+	getDependabot,
 	getRepository,
 	getRepositoryLanguages,
 	getRepositoryTeams,
@@ -21,6 +22,8 @@ const repoTopics = await getTopics('sheplu', 'aws-safe-modules');
 console.log(repoTopics);
 const repoCodeowner = await getCodeowners('sheplu', 'aws-safe-modules');
 console.log(repoCodeowner);
+const repoDependabot = await getDependabot('sheplu', 'aws-safe-modules');
+console.log(repoDependabot);
 
 const repoCollaborators = await listCollaborators('sheplu', 'aws-safe-modules');
 console.log(repoCollaborators.length);

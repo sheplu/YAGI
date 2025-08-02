@@ -206,3 +206,14 @@ export async function getCodeowners(owner, repository) {
     });
     return request.json();
 };
+
+export async function getDependabot(owner, repository) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}/automated-security-fixes`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return request.json();
+};
