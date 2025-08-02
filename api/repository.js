@@ -217,3 +217,14 @@ export async function getDependabot(owner, repository) {
     });
     return request.json();
 };
+
+export async function getVulnerabilityReporting(owner, repository) {
+    const url = `${GITHUB_URL}/repos/${owner}/${repository}/private-vulnerability-reporting`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return request.json();
+};
