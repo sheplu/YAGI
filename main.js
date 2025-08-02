@@ -1,6 +1,7 @@
 import {
 	archiveRepository,
 	deleteRepository,
+	getCodeowners,
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
@@ -10,7 +11,7 @@ import {
     listRepositories,
 	replaceTopics,
 	unarchiveRepository,
-	updateRepository
+	updateRepository,
 } from "./api/repository.js";
 
 import {
@@ -26,6 +27,7 @@ export {
     // repository
 	archiveRepository,
 	deleteRepository,
+	getCodeowners,
     getRepository,
     getRepositoryLanguages,
     getRepositoryTeams,
