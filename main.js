@@ -18,6 +18,7 @@ import {
 
 import {
 	createRepository,
+	listMembers,
     listTeams
 } from "./api/organization.js";
 
@@ -45,6 +46,7 @@ export {
 
     // organisation
 	createRepository,
+	listMembers,
     listTeams,
 
 	// user
