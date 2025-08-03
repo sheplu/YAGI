@@ -1,8 +1,11 @@
 import { deleteRepository, updateRepository } from "../api/repository.js";
-import { archiveRepository, createRepository, listTeams, unarchiveRepository } from "../main.js";
+import { archiveRepository, createRepository, listMembers, listTeams, unarchiveRepository } from "../main.js";
 
 const organizationTeam = await listTeams('not-organisation');
 console.log(organizationTeam.length);
+
+const organizationMembers = await listMembers('not-organisation');
+console.log(organizationMembers.length);
 
 const createRepo = await createRepository('not-organisation', {
             "name": 'My-new-repo',
