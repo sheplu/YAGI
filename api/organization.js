@@ -53,6 +53,32 @@ export async function listMembers(owner) {
     }
 };
 
+export async function listPublicMembers(owner) {
+    try {
+        let page = 1;
+        let continueLoop = true;
+        const publicMembers = [];
+        while (continueLoop) {
+            const url = `${GITHUB_URL}/orgs/${owner}/public_members?per_page=100&page=${page}`;
+            const request = await fetch(url, {
+                headers: {
+                    Accept: 'application/vnd.github.v3+json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const result = await request.json();
+            publicMembers.push(...result);
+            page++;
+            if (result.length < 100) {
+                continueLoop = false;
+            }
+        }
+        return publicMembers;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 export async function createRepository(owner, repositoryConfiguration) {
     try {
         const url = `${GITHUB_URL}/orgs/${owner}/repos`
