@@ -1,5 +1,4 @@
-const GITHUB_URL = 'https://api.github.com';
-const token = process.env.GITHUB_TOKEN;
+import { GITHUB_TOKEN, GITHUB_URL } from "./utils.js";
 
 export async function createRepository(owner, repositoryConfiguration) {
 	try {
@@ -8,7 +7,7 @@ export async function createRepository(owner, repositoryConfiguration) {
 		const request = await fetch(url, {
 			headers: {
 				'Accept': 'application/vnd.github.v3+json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${GITHUB_TOKEN}`
 			},
 			body: JSON.stringify(body),
 			method: "POST"

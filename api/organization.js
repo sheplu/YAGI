@@ -1,5 +1,4 @@
-const GITHUB_URL = 'https://api.github.com';
-const token = process.env.GITHUB_TOKEN;
+import { GITHUB_TOKEN, GITHUB_URL } from "./utils.js";
 
 export async function listTeams(owner) {
     try {
@@ -11,7 +10,7 @@ export async function listTeams(owner) {
             const request = await fetch(url, {
                 headers: {
                     Accept: 'application/vnd.github.v3+json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${GITHUB_TOKEN}`,
                 },
             });
             const result = await request.json();
@@ -37,7 +36,7 @@ export async function listMembers(owner) {
             const request = await fetch(url, {
                 headers: {
                     Accept: 'application/vnd.github.v3+json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${GITHUB_TOKEN}`,
                 },
             });
             const result = await request.json();
@@ -63,7 +62,7 @@ export async function listPublicMembers(owner) {
             const request = await fetch(url, {
                 headers: {
                     Accept: 'application/vnd.github.v3+json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${GITHUB_TOKEN}`,
                 },
             });
             const result = await request.json();
@@ -86,7 +85,7 @@ export async function createRepository(owner, repositoryConfiguration) {
         const request = await fetch(url, {
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${GITHUB_TOKEN}`
             },
             body: JSON.stringify(body),
             method: "POST"

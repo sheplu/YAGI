@@ -1,12 +1,11 @@
-const GITHUB_URL = 'https://api.github.com';
-const token = process.env.GITHUB_TOKEN;
+import { GITHUB_TOKEN, GITHUB_URL } from "./utils.js";
 
 export async function getRepository(owner, repository) {
     const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
     });
 
@@ -18,7 +17,7 @@ export async function archiveRepository(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
 		body: JSON.stringify({ archived: true }),
 		method: 'PATCH'
@@ -32,7 +31,7 @@ export async function unarchiveRepository(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
 		body: JSON.stringify({ archived: false }),
 		method: 'PATCH'
@@ -46,7 +45,7 @@ export async function updateRepository(owner, repository, body) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
 		body: JSON.stringify(body),
 		method: 'PATCH'
@@ -60,7 +59,7 @@ export async function deleteRepository(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
 		method: 'DELETE'
     });
@@ -78,7 +77,7 @@ export async function listRepositories(owner) {
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
-					Authorization: `Bearer ${token}`,
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
             const result = await request.json();
@@ -104,7 +103,7 @@ export async function listCollaborators(owner, repository, affiliation = 'all') 
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
-					Authorization: `Bearer ${token}`,
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
             const result = await request.json();
@@ -130,7 +129,7 @@ export async function listContributors(owner, repository) {
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
-					Authorization: `Bearer ${token}`,
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
             const result = await request.json();
@@ -151,7 +150,7 @@ export async function getRepositoryLanguages(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
     });
     return request.json();
@@ -162,7 +161,7 @@ export async function getRepositoryTeams(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
     });
     return request.json();
@@ -173,7 +172,7 @@ export async function getTopics(owner, repository) {
 	const request = await fetch(url, {
 		headers: {
 			'Accept': 'application/vnd.github.v3+json',
-			'Authorization': `Bearer ${token}`
+			'Authorization': `Bearer ${GITHUB_TOKEN}`
 		},
 	})
 	return request.json();
@@ -188,7 +187,7 @@ export async function replaceTopics(owner, repository, topics) {
 	const request = await fetch(url, {
 		headers: {
 			'Accept': 'application/vnd.github.v3+json',
-			'Authorization': `Bearer ${token}`
+			'Authorization': `Bearer ${GITHUB_TOKEN}`
 		},
 		body: JSON.stringify(body),
 		method: "PUT"
@@ -201,7 +200,7 @@ export async function getCodeowners(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
     });
     return request.json();
@@ -212,7 +211,7 @@ export async function getDependabot(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
     });
     return request.json();
@@ -223,7 +222,7 @@ export async function getVulnerabilityReporting(owner, repository) {
     const request = await fetch(url, {
         headers: {
             Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
     });
     return request.json();
