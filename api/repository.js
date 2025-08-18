@@ -20,7 +20,7 @@ export async function archiveRepository(owner, repository) {
             Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
 		body: JSON.stringify({ archived: true }),
-		method: 'PATCH'
+		method: 'PATCH',
     });
 
     return request.json();
@@ -34,7 +34,7 @@ export async function unarchiveRepository(owner, repository) {
             Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
 		body: JSON.stringify({ archived: false }),
-		method: 'PATCH'
+		method: 'PATCH',
     });
 
     return request.json();
@@ -48,7 +48,7 @@ export async function updateRepository(owner, repository, body) {
             Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
 		body: JSON.stringify(body),
-		method: 'PATCH'
+		method: 'PATCH',
     });
 
     return request.json();
@@ -61,7 +61,7 @@ export async function deleteRepository(owner, repository) {
             Accept: 'application/vnd.github.v3+json',
             Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
-		method: 'DELETE'
+		method: 'DELETE',
     });
 
     return request;
@@ -172,7 +172,7 @@ export async function getTopics(owner, repository) {
 	const request = await fetch(url, {
 		headers: {
 			'Accept': 'application/vnd.github.v3+json',
-			'Authorization': `Bearer ${GITHUB_TOKEN}`
+			'Authorization': `Bearer ${GITHUB_TOKEN}`,
 		},
 	})
 	return request.json();
@@ -181,16 +181,16 @@ export async function getTopics(owner, repository) {
 export async function replaceTopics(owner, repository, topics) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`
 	const body = {
-		"names": topics
+		"names": topics,
 	}
 
 	const request = await fetch(url, {
 		headers: {
 			'Accept': 'application/vnd.github.v3+json',
-			'Authorization': `Bearer ${GITHUB_TOKEN}`
+			'Authorization': `Bearer ${GITHUB_TOKEN}`,
 		},
 		body: JSON.stringify(body),
-		method: "PUT"
+		method: "PUT",
 	})
 	return request.json();
 };

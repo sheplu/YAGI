@@ -85,10 +85,10 @@ export async function createRepository(owner, repositoryConfiguration) {
         const request = await fetch(url, {
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
-                'Authorization': `Bearer ${GITHUB_TOKEN}`
+                'Authorization': `Bearer ${GITHUB_TOKEN}`,
             },
             body: JSON.stringify(body),
-            method: "POST"
+            method: "POST",
         })
 
         return request.json();

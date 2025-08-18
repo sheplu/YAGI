@@ -11,6 +11,6 @@ const createRepo = await userCreateRepository('sheplu', {
 	"allow_squash_merge": false,
 	"allow_merge_commit": false,
 	"delete_branch_on_merge": true,
-	"auto_init": true
+	"auto_init": true,
 });
 console.log(createRepo);

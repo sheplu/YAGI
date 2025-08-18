@@ -18,13 +18,13 @@ const createRepo = await createRepository('not-organisation', {
             "allow_squash_merge": false,
             "allow_merge_commit": false,
             "delete_branch_on_merge": true,
-            "auto_init": true
+            "auto_init": true,
         });
 console.log(createRepo);
 
 const updateRepo = await updateRepository('not-organisation', 'My-new-repo', {
             "description": "This is your second repository",
-            "homepage": "https://google.com"
+            "homepage": "https://google.com",
         });
 console.log(updateRepo);
 

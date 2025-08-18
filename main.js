@@ -20,7 +20,7 @@ import {
 import {
 	createRepository,
 	listMembers,
-    listTeams
+    listTeams,
 } from "./api/organization.js";
 
 import {
@@ -52,5 +52,5 @@ export {
     listTeams,
 
 	// user
-	userCreateRepository
+	userCreateRepository,
 };
