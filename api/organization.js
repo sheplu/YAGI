@@ -95,5 +95,16 @@ export async function createRepository(owner, repositoryConfiguration) {
     } catch (error) {
         console.error(error)
     }
+};
 
+export async function getOrganizationSecrets(owner) {
+    const url = `${GITHUB_URL}/orgs/${owner}/actions/secrets`;
+    const request = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
+        },
+    });
+
+    return request.json();
 };
