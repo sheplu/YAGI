@@ -1,70 +1,70 @@
 import { GITHUB_TOKEN, GITHUB_URL } from "./utils.js";
 
 export async function getRepository(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
 
-    return request.json();
+	return request.json();
 };
 
 export async function archiveRepository(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
 		body: JSON.stringify({ archived: true }),
 		method: 'PATCH',
-    });
+	});
 
-    return request.json();
+	return request.json();
 };
 
 export async function unarchiveRepository(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
 		body: JSON.stringify({ archived: false }),
 		method: 'PATCH',
-    });
+	});
 
-    return request.json();
+	return request.json();
 };
 
 export async function updateRepository(owner, repository, body) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
 		body: JSON.stringify(body),
 		method: 'PATCH',
-    });
+	});
 
-    return request.json();
+	return request.json();
 };
 
 export async function deleteRepository(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
 		method: 'DELETE',
-    });
+	});
 
-    return request;
+	return request;
 };
 
 export async function listRepositories(owner) {
@@ -80,7 +80,7 @@ export async function listRepositories(owner) {
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
-            const result = await request.json();
+			const result = await request.json();
 			repositories.push(...result);
 			page++;
 			if (result.length < 100) {
@@ -106,7 +106,7 @@ export async function listCollaborators(owner, repository, affiliation = 'all') 
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
-            const result = await request.json();
+			const result = await request.json();
 			collaborators.push(...result);
 			page++;
 			if (result.length < 100) {
@@ -132,7 +132,7 @@ export async function listContributors(owner, repository) {
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
-            const result = await request.json();
+			const result = await request.json();
 			contributors.push(...result);
 			page++;
 			if (result.length < 100) {
@@ -146,25 +146,25 @@ export async function listContributors(owner, repository) {
 };
 
 export async function getRepositoryLanguages(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/languages`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/languages`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function getRepositoryTeams(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/teams`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/teams`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function getTopics(owner, repository) {
@@ -196,78 +196,78 @@ export async function replaceTopics(owner, repository, topics) {
 };
 
 export async function getCodeowners(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/codeowners/errors`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/codeowners/errors`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function getDependabot(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/automated-security-fixes`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/automated-security-fixes`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function getVulnerabilityReporting(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/private-vulnerability-reporting`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/private-vulnerability-reporting`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function listBranches(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function listReleases(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function getLatestRelease(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/latest`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/latest`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
 
 export async function listTags(owner, repository) {
-    const url = `${GITHUB_URL}/repos/${owner}/${repository}/tags`;
-    const request = await fetch(url, {
-        headers: {
-            Accept: 'application/vnd.github.v3+json',
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-        },
-    });
-    return request.json();
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/tags`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+	return request.json();
 };
