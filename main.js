@@ -4,16 +4,16 @@ import {
 	getCodeowners,
 	getDependabot,
 	getLatestRelease,
-    getRepository,
-    getRepositoryLanguages,
-    getRepositoryTeams,
+	getRepository,
+	getRepositoryLanguages,
+	getRepositoryTeams,
 	getTopics,
 	getVulnerabilityReporting,
 	listBranches,
 	listCollaborators,
 	listContributors,
 	listReleases,
-    listRepositories,
+	listRepositories,
 	listTags,
 	replaceTopics,
 	unarchiveRepository,
@@ -24,7 +24,7 @@ import {
 	createRepository,
 	getOrganizationSecrets,
 	listMembers,
-    listTeams,
+	listTeams,
 } from "./api/organization.js";
 
 import {
@@ -32,32 +32,33 @@ import {
 } from "./api/user.js";
 
 export {
-    // repository
+
+	// repository
 	archiveRepository,
 	deleteRepository,
 	getCodeowners,
 	getDependabot,
 	getLatestRelease,
-    getRepository,
-    getRepositoryLanguages,
-    getRepositoryTeams,
+	getRepository,
+	getRepositoryLanguages,
+	getRepositoryTeams,
 	getTopics,
 	getVulnerabilityReporting,
 	listBranches,
 	listCollaborators,
 	listContributors,
 	listReleases,
-    listRepositories,
+	listRepositories,
 	listTags,
 	replaceTopics,
 	unarchiveRepository,
 	updateRepository,
 
-    // organisation
+	// organisation
 	createRepository,
 	getOrganizationSecrets,
 	listMembers,
-    listTeams,
+	listTeams,
 
 	// user
 	userCreateRepository,

@@ -13,6 +13,9 @@ export default defineConfig([
 		languageOptions: {
 			globals: globals.node,
 		},
+		rules: {
+			"@stylistic/keyword-spacing": "off",
+		},
 	},
 	{
 		files: [ "**/*.md" ],
