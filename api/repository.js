@@ -1,4 +1,4 @@
-import { GITHUB_TOKEN, GITHUB_URL } from "./utils.js";
+import { GITHUB_TOKEN, GITHUB_URL } from './utils.js';
 
 export async function getRepository(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
@@ -72,6 +72,7 @@ export async function listRepositories(owner) {
 		let page = 1;
 		let continueLoop = true;
 		const repositories = [];
+
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/orgs/${owner}/repos?per_page=100&page=${page}`;
 			const request = await fetch(url, {
@@ -81,12 +82,14 @@ export async function listRepositories(owner) {
 				},
 			});
 			const result = await request.json();
+
 			repositories.push(...result);
 			page++;
 			if (result.length < 100) {
 				continueLoop = false;
 			}
 		}
+
 		return repositories;
 	} catch (error) {
 		console.error(error);
@@ -98,6 +101,7 @@ export async function listCollaborators(owner, repository, affiliation = 'all') 
 		let page = 1;
 		let continueLoop = true;
 		const collaborators = [];
+
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/repos/${owner}/${repository}/collaborators?per_page=100&page=${page}&affiliation=${affiliation}`;
 			const request = await fetch(url, {
@@ -107,12 +111,14 @@ export async function listCollaborators(owner, repository, affiliation = 'all') 
 				},
 			});
 			const result = await request.json();
+
 			collaborators.push(...result);
 			page++;
 			if (result.length < 100) {
 				continueLoop = false;
 			}
 		}
+
 		return collaborators;
 	} catch (error) {
 		console.error(error);
@@ -124,6 +130,7 @@ export async function listContributors(owner, repository) {
 		let page = 1;
 		let continueLoop = true;
 		const contributors = [];
+
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/repos/${owner}/${repository}/contributors?per_page=100&page=${page}`;
 			const request = await fetch(url, {
@@ -133,12 +140,14 @@ export async function listContributors(owner, repository) {
 				},
 			});
 			const result = await request.json();
+
 			contributors.push(...result);
 			page++;
 			if (result.length < 100) {
 				continueLoop = false;
 			}
 		}
+
 		return contributors;
 	} catch (error) {
 		console.error(error);
@@ -153,6 +162,7 @@ export async function getRepositoryLanguages(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
@@ -164,34 +174,37 @@ export async function getRepositoryTeams(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
 export async function getTopics(owner, repository) {
-	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`;
 	const request = await fetch(url, {
 		headers: {
-			'Accept': 'application/vnd.github.v3+json',
-			'Authorization': `Bearer ${GITHUB_TOKEN}`,
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
-	})
+	});
+
 	return request.json();
 };
 
 export async function replaceTopics(owner, repository, topics) {
-	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`;
 	const body = {
-		"names": topics,
-	}
+		names: topics,
+	};
 
 	const request = await fetch(url, {
 		headers: {
-			'Accept': 'application/vnd.github.v3+json',
-			'Authorization': `Bearer ${GITHUB_TOKEN}`,
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 		body: JSON.stringify(body),
-		method: "PUT",
-	})
+		method: 'PUT',
+	});
+
 	return request.json();
 };
 
@@ -203,6 +216,7 @@ export async function getCodeowners(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
@@ -214,6 +228,7 @@ export async function getDependabot(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
@@ -225,6 +240,7 @@ export async function getVulnerabilityReporting(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
@@ -236,6 +252,7 @@ export async function listBranches(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
@@ -247,6 +264,7 @@ export async function listReleases(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
@@ -258,6 +276,7 @@ export async function getLatestRelease(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
@@ -269,6 +288,7 @@ export async function listTags(owner, repository) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 	});
+
 	return request.json();
 };
 
