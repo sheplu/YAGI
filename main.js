@@ -22,6 +22,7 @@ import {
 
 import {
 	createRepository,
+	getOrganizationSecret,
 	getOrganizationSecrets,
 	listMembers,
 	listTeams,
@@ -56,6 +57,7 @@ export {
 
 	// organisation
 	createRepository,
+	getOrganizationSecret,
 	getOrganizationSecrets,
 	listMembers,
 	listTeams,
