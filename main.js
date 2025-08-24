@@ -20,19 +20,17 @@ import {
 	replaceTopics,
 	unarchiveRepository,
 	updateRepository,
-} from "./api/repository.js";
-
+} from './api/repository.js';
 import {
 	createRepository,
 	getOrganizationSecret,
 	getOrganizationSecrets,
 	listMembers,
 	listTeams,
-} from "./api/organization.js";
-
+} from './api/organization.js';
 import {
 	createRepository as userCreateRepository,
-} from "./api/user.js";
+} from './api/user.js';
 
 export {
 
