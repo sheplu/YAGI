@@ -271,3 +271,15 @@ export async function listTags(owner, repository) {
 	});
 	return request.json();
 };
+
+export async function getRepositorySecret(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/actions/secrets`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
