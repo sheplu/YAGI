@@ -327,3 +327,15 @@ export async function listRepositoryEnvironments(owner, repository) {
 
 	return request.json();
 };
+
+export async function getRepositoryEnvironment(owner, repository, environment) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environment}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
