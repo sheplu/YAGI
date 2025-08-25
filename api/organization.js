@@ -129,3 +129,15 @@ export async function getOrganizationSecret(owner, secret) {
 
 	return request.json();
 };
+
+export async function getOrganizationVariables(owner) {
+	const url = `${GITHUB_URL}/orgs/${owner}/actions/variables`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
