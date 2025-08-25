@@ -27,6 +27,7 @@ import {
 	createRepository,
 	getOrganizationSecret,
 	getOrganizationSecrets,
+	getOrganizationVariables,
 	listMembers,
 	listTeams,
 } from './api/organization.js';
@@ -65,6 +66,7 @@ export {
 	createRepository,
 	getOrganizationSecret,
 	getOrganizationSecrets,
+	getOrganizationVariables,
 	listMembers,
 	listTeams,
 
