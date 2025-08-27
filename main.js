@@ -1,6 +1,7 @@
 import {
 	archiveRepository,
 	deleteRepository,
+	getBranch,
 	getCodeowners,
 	getDependabot,
 	getLatestRelease,
@@ -40,6 +41,7 @@ export {
 	// repository
 	archiveRepository,
 	deleteRepository,
+	getBranch,
 	getCodeowners,
 	getDependabot,
 	getLatestRelease,
