@@ -256,6 +256,18 @@ export async function listBranches(owner, repository) {
 	return request.json();
 };
 
+export async function getBranch(owner, repository, branch) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches/${branch}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
+
 export async function listReleases(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases`;
 	const request = await fetch(url, {
