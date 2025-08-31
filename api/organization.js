@@ -8,12 +8,14 @@ export async function listTeams(owner) {
 
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/orgs/${owner}/teams?per_page=100&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
+			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
 			teams.push(...result);
@@ -37,12 +39,14 @@ export async function listMembers(owner) {
 
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/orgs/${owner}/members?per_page=100&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
+			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
 			members.push(...result);
@@ -66,12 +70,14 @@ export async function listPublicMembers(owner) {
 
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/orgs/${owner}/public_members?per_page=100&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
+			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
 			publicMembers.push(...result);

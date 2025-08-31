@@ -75,12 +75,14 @@ export async function listRepositories(owner) {
 
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/orgs/${owner}/repos?per_page=100&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
+			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
 			repositories.push(...result);
@@ -103,13 +105,16 @@ export async function listCollaborators(owner, repository, affiliation = 'all') 
 		const collaborators = [];
 
 		while (continueLoop) {
+			// eslint-disable-next-line @stylistic/max-len
 			const url = `${GITHUB_URL}/repos/${owner}/${repository}/collaborators?per_page=100&page=${page}&affiliation=${affiliation}`;
+			// eslint-disable-next-line no-await-in-loop
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
+			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
 			collaborators.push(...result);
@@ -132,13 +137,16 @@ export async function listContributors(owner, repository) {
 		const contributors = [];
 
 		while (continueLoop) {
+			// eslint-disable-next-line @stylistic/max-len
 			const url = `${GITHUB_URL}/repos/${owner}/${repository}/contributors?per_page=100&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
 			const request = await fetch(url, {
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
 					Authorization: `Bearer ${GITHUB_TOKEN}`,
 				},
 			});
+			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
 			contributors.push(...result);
@@ -281,6 +289,7 @@ export async function getBranchProtection(owner, repository, branch) {
 };
 
 export async function getBranchProtectionAdmin(owner, repository, branch) {
+	// eslint-disable-next-line @stylistic/max-len
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches/${branch}/protection/enforce_admins`;
 	const request = await fetch(url, {
 		headers: {
@@ -293,6 +302,7 @@ export async function getBranchProtectionAdmin(owner, repository, branch) {
 };
 
 export async function getBranchProtectionPullRequest(owner, repository, branch) {
+	// eslint-disable-next-line @stylistic/max-len
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches/${branch}/protection/required_pull_request_reviews`;
 	const request = await fetch(url, {
 		headers: {
@@ -305,6 +315,7 @@ export async function getBranchProtectionPullRequest(owner, repository, branch) 
 };
 
 export async function getCommitSignatureProtection(owner, repository, branch) {
+	// eslint-disable-next-line @stylistic/max-len
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches/${branch}/protection/required_signatures`;
 	const request = await fetch(url, {
 		headers: {
