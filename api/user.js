@@ -1,6 +1,6 @@
 import { GITHUB_TOKEN, GITHUB_URL } from './utils.js';
 
-export async function createRepository(owner, repositoryConfiguration) {
+export async function createRepository(repositoryConfiguration) {
 	try {
 		const url = `${GITHUB_URL}/user/repos`;
 		const body = repositoryConfiguration;
