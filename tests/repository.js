@@ -10,40 +10,41 @@ import {
 	listContributors,
 	listRepositories,
 } from '../main.js';
+import { logger } from '../api/utils.js';
 import { writeFileSync } from 'node:fs';
 
 const repo = await getRepository('sheplu', 'aws-safe-modules');
 
-console.log(repo);
+logger.log(repo);
 const repoLanguage = await getRepositoryLanguages('sheplu', 'aws-safe-modules');
 
-console.log(repoLanguage);
+logger.log(repoLanguage);
 const repoTeams = await getRepositoryTeams('sheplu', 'aws-safe-modules');
 
-console.log(repoTeams);
+logger.log(repoTeams);
 
 const repoTopics = await getTopics('sheplu', 'aws-safe-modules');
 
-console.log(repoTopics);
+logger.log(repoTopics);
 const repoCodeowner = await getCodeowners('sheplu', 'aws-safe-modules');
 
-console.log(repoCodeowner);
+logger.log(repoCodeowner);
 const repoDependabot = await getDependabot('sheplu', 'aws-safe-modules');
 
-console.log(repoDependabot);
+logger.log(repoDependabot);
 const repoVuln = await getVulnerabilityReporting('sheplu', 'aws-safe-modules');
 
-console.log(repoVuln);
+logger.log(repoVuln);
 
 const repoCollaborators = await listCollaborators('sheplu', 'aws-safe-modules');
 
-console.log(repoCollaborators.length);
+logger.log(repoCollaborators.length);
 
 const repoContributors = await listContributors('sheplu', 'aws-safe-modules');
 
-console.log(repoContributors.length);
+logger.log(repoContributors.length);
 
 const repos = await listRepositories('not-organisation');
 
-console.log(repos.length);
+logger.log(repos.length);
 writeFileSync('./data', JSON.stringify(repos));
