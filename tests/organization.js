@@ -1,4 +1,3 @@
-import { deleteRepository, updateRepository } from '../api/repository.js';
 import {
 	archiveRepository,
 	createRepository,
@@ -6,46 +5,48 @@ import {
 	listTeams,
 	unarchiveRepository,
 } from '../main.js';
+import { deleteRepository, updateRepository } from '../api/repository.js';
+import { logger } from '../api/utils.js';
 
 const organizationTeam = await listTeams('not-organisation');
 
-console.log(organizationTeam.length);
+logger.log(organizationTeam.length);
 
 const organizationMembers = await listMembers('not-organisation');
 
-console.log(organizationMembers.length);
+logger.log(organizationMembers.length);
 
 const createRepo = await createRepository('not-organisation', {
-	'name': 'My-new-repo',
+	'allow_merge_commit': false,
+	'allow_squash_merge': false,
+	'auto_init': true,
+	'delete_branch_on_merge': true,
 	'description': 'This is your first repository',
-	'homepage': 'https://github.com',
-	'private': true,
 	'has_issues': true,
 	'has_projects': true,
 	'has_wiki': true,
-	'allow_squash_merge': false,
-	'allow_merge_commit': false,
-	'delete_branch_on_merge': true,
-	'auto_init': true,
+	'homepage': 'https://github.com',
+	'name': 'My-new-repo',
+	'private': true,
 });
 
-console.log(createRepo);
+logger.log(createRepo);
 
 const updateRepo = await updateRepository('not-organisation', 'My-new-repo', {
 	description: 'This is your second repository',
 	homepage: 'https://google.com',
 });
 
-console.log(updateRepo);
+logger.log(updateRepo);
 
 const archive = await archiveRepository('not-organisation', 'My-new-repo');
 
-console.log(archive);
+logger.log(archive);
 
 const unarchive = await unarchiveRepository('not-organisation', 'My-new-repo');
 
-console.log(unarchive);
+logger.log(unarchive);
 
 const deleteRepo = await deleteRepository('not-organisation', 'My-new-repo');
 
-console.log(deleteRepo);
+logger.log(deleteRepo);

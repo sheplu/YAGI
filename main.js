@@ -42,7 +42,7 @@ import {
 
 export {
 
-	// repository
+	// Repository
 	archiveRepository,
 	deleteRepository,
 	getBranch,
@@ -72,7 +72,7 @@ export {
 	unarchiveRepository,
 	updateRepository,
 
-	// organisation
+	// Organisation
 	createRepository,
 	getOrganizationSecret,
 	getOrganizationSecrets,
@@ -80,6 +80,6 @@ export {
 	listMembers,
 	listTeams,
 
-	// user
+	// User
 	userCreateRepository,
 };

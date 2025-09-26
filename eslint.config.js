@@ -1,30 +1,32 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import markdown from '@eslint/markdown';
 import { defineConfig } from 'eslint/config';
-import stylistic from '@stylistic/eslint-plugin';
+import globals from 'globals';
+import js from '@eslint/js';
+import markdown from '@eslint/markdown';
 import myConfig from '@sheplu/eslint-config/src/stylistic.js';
 import myEslint from '@sheplu/eslint-config/src/eslint.js';
+import stylistic from '@stylistic/eslint-plugin';
 
+// eslint-disable-next-line no-restricted-exports
 export default defineConfig([
 	{
-		'files': [ '**/*.{js,mjs,cjs}' ],
-		'plugins': { js, '@stylistic': stylistic },
 		'extends': [
 			'js/recommended',
 			myConfig,
 			myEslint,
 		],
+		'files': [ '**/*.{js,mjs,cjs}' ],
 		'languageOptions': {
 			globals: globals.node,
 		},
+		// eslint-disable-next-line object-shorthand
+		'plugins': { '@stylistic': stylistic, js },
 		'rules': {
 		},
 	},
 	{
-		'files': [ '**/*.md' ],
-		'plugins': { markdown },
-		'language': 'markdown/gfm',
 		'extends': [ 'markdown/recommended' ],
+		'files': [ '**/*.md' ],
+		'language': 'markdown/gfm',
+		'plugins': { markdown },
 	},
 ]);
