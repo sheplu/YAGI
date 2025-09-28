@@ -25,7 +25,7 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@eslint/markdown": "^7.3.0",
-    "@sheplu/eslint-config": "^0.324.2",
+    "@sheplu/eslint-config": "^0.344.0",
     "@stylistic/eslint-plugin": "^5.4.0",
     "eslint": "^9.36.0",
     "globals": "^16.4.0"
