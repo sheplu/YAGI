@@ -48,3 +48,15 @@ export async function listTeams(owner, repository) {
 
 	return request.json();
 };
+
+export async function getTopics(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
