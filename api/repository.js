@@ -294,6 +294,7 @@ export async function getBranch(owner, repository, branch) {
 	return request.json();
 };
 
+// @Moved
 export async function getBranchProtection(owner, repository, branch) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches/${branch}/protection`;
 	const request = await fetch(url, {
