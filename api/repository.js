@@ -7,6 +7,7 @@ import {
 	logger,
 } from './utils.js';
 
+// @Moved
 export async function getRepository(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
 	const request = await fetch(url, {
