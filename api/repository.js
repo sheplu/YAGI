@@ -174,6 +174,7 @@ export async function listContributors(owner, repository) {
 	}
 };
 
+// @Moved
 export async function getRepositoryLanguages(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/languages`;
 	const request = await fetch(url, {
