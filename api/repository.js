@@ -141,6 +141,7 @@ export async function listCollaborators(owner, repository, affiliation = 'all') 
 	}
 };
 
+// @Moved
 export async function listContributors(owner, repository) {
 	try {
 		let page = BASE_COUNTER;
