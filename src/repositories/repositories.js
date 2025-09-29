@@ -36,3 +36,15 @@ export async function listLanguages(owner, repository) {
 
 	return request.json();
 };
+
+export async function listTeams(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/teams`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
