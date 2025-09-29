@@ -187,6 +187,7 @@ export async function getRepositoryLanguages(owner, repository) {
 	return request.json();
 };
 
+// @Moved
 export async function getRepositoryTeams(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/teams`;
 	const request = await fetch(url, {
