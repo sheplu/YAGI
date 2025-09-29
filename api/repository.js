@@ -269,6 +269,7 @@ export async function getVulnerabilityReporting(owner, repository) {
 	return request.json();
 };
 
+// @Moved
 export async function listBranches(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches`;
 	const request = await fetch(url, {
