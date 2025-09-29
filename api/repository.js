@@ -200,6 +200,7 @@ export async function getRepositoryTeams(owner, repository) {
 	return request.json();
 };
 
+// @Moved
 export async function getTopics(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`;
 	const request = await fetch(url, {
