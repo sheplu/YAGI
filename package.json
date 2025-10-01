@@ -14,7 +14,20 @@
     "type": "git",
     "url": "git+https://github.com/sheplu/YAGI.git"
   },
-  "keywords": [],
+  "keywords": [
+		"yagi",
+		"octokit",
+		"gh",
+		"github",
+		"cli",
+		"wrapper",
+		"github-cli",
+		"github-client",
+		"sdk",
+		"cli",
+		"automation",
+		"workflow"
+	],
   "author": "",
   "license": "MIT",
   "type": "module",
