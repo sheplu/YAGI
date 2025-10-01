@@ -1,3 +1,5 @@
+// @GitHub-API: https://docs.github.com/en/rest/branches/branch-protection
+
 import { GITHUB_TOKEN } from '../utils/token.js';
 import { GITHUB_URL } from '../utils/const.js';
 
