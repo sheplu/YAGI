@@ -1,3 +1,5 @@
+// @GitHub-API: https://docs.github.com/en/rest/dependabot/alerts
+
 import {
 	BASE_COUNTER,
 	DEFAULT_INCREMENT,
