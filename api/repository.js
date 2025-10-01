@@ -307,6 +307,7 @@ export async function getBranchProtection(owner, repository, branch) {
 	return request.json();
 };
 
+// @Moved
 export async function getBranchProtectionAdmin(owner, repository, branch) {
 	// eslint-disable-next-line @stylistic/max-len
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches/${branch}/protection/enforce_admins`;
