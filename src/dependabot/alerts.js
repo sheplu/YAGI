@@ -41,3 +41,36 @@ export async function listAlertsRepository(owner, repository) {
 		throw new Error(`Error listing alerts for ${owner}/${repository}`, { cause: error });
 	}
 };
+
+export async function listAlertsOrganization(owner) {
+	try {
+		let page = BASE_COUNTER;
+		let continueLoop = true;
+		const alerts = [];
+
+		while (continueLoop) {
+			const url = `${GITHUB_URL}/orgs/${owner}/dependabot/alerts
+				?per_page=${GITHUB_PAGE_LENGTH}&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
+			const request = await fetch(url, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json',
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
+				},
+			});
+			// eslint-disable-next-line no-await-in-loop
+			const result = await request.json();
+
+			alerts.push(...result);
+			page = page + DEFAULT_INCREMENT;
+			if (result.length < GITHUB_PAGE_LENGTH) {
+				continueLoop = false;
+			}
+		}
+
+		return alerts;
+	} catch (error) {
+		logger.error(error);
+		throw new Error(`Error listing alerts for ${owner}`, { cause: error });
+	}
+};
