@@ -107,3 +107,15 @@ export async function listAlertsEnterprise(owner) {
 		throw new Error(`Error listing alerts for ${owner}`, { cause: error });
 	}
 };
+
+export async function getAlert(owner, repository, alertId) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/dependabot/alerts/${alertId}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
