@@ -283,6 +283,7 @@ export async function listBranches(owner, repository) {
 	return request.json();
 };
 
+// @Moved
 export async function getBranch(owner, repository, branch) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/branches/${branch}`;
 	const request = await fetch(url, {
