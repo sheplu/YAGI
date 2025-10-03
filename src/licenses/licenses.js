@@ -5,7 +5,7 @@ import {
 	GITHUB_URL,
 } from '../utils/const.js';
 
-export async function getBranchProtectionPR(owner, repository) {
+export async function getLicense(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/license`;
 	const request = await fetch(url, {
 		headers: {
