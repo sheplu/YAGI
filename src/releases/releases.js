@@ -41,3 +41,15 @@ export async function listReleases(owner, repository) {
 		throw new Error(`Error listing releases for ${owner}/${repository}`, { cause: error });
 	}
 };
+
+export async function getLatestRelease(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/latest`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
