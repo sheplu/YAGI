@@ -350,6 +350,7 @@ export async function getCommitSignProtection(owner, repository, branch) {
 	return request.json();
 };
 
+// @Moved
 export async function listReleases(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases`;
 	const request = await fetch(url, {
