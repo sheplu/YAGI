@@ -363,6 +363,7 @@ export async function listReleases(owner, repository) {
 	return request.json();
 };
 
+// @Moved
 export async function getLatestRelease(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/latest`;
 	const request = await fetch(url, {
