@@ -134,3 +134,36 @@ export async function listRepositories(owner) {
 		throw new Error(`Error listing repositories for ${owner}`, { cause: error });
 	}
 };
+
+export async function listTags(owner, repository) {
+	try {
+		let page = BASE_COUNTER;
+		let continueLoop = true;
+		const tags = [];
+
+		while (continueLoop) {
+			const url = `${GITHUB_URL}/repos/${owner}/${repository}/tags
+				?per_page=${GITHUB_PAGE_LENGTH}&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
+			const request = await fetch(url, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json',
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
+				},
+			});
+			// eslint-disable-next-line no-await-in-loop
+			const result = await request.json();
+
+			tags.push(...result);
+			page = page + DEFAULT_INCREMENT;
+			if (result.length < GITHUB_PAGE_LENGTH) {
+				continueLoop = false;
+			}
+		}
+
+		return tags;
+	} catch (error) {
+		logger.error(error);
+		throw new Error(`Error listing tags for ${owner}`, { cause: error });
+	}
+};
