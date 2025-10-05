@@ -41,3 +41,15 @@ export async function listPullRequests(owner, repository) {
 		throw new Error(`Error listing pull requests for ${owner}/${repository}`, { cause: error });
 	}
 };
+
+export async function getPullRequest(owner, repository, pullRequestID) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/pulls/${pullRequestID}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
