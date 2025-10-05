@@ -167,3 +167,15 @@ export async function listTags(owner, repository) {
 		throw new Error(`Error listing tags for ${owner}`, { cause: error });
 	}
 };
+
+export async function getDependabot(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/automated-security-fixes`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
