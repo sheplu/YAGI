@@ -112,3 +112,16 @@ export async function getLabel(owner, repository, label) {
 
 	return request.json();
 };
+
+export async function deleteLabel(owner, repository, label) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/labels/${label}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'DELETE',
+	});
+
+	return request.json();
+};
