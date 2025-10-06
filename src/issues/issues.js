@@ -53,3 +53,16 @@ export async function getIssue(owner, repository, issue) {
 
 	return request.json();
 };
+
+export async function unlockIssue(owner, repository, issue) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/issues/${issue}/lock`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'DELETE',
+	});
+
+	return request.json();
+};
