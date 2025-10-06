@@ -41,3 +41,16 @@ export async function listLabels(owner, repository, issue) {
 		throw new Error(`Error listing labels for ${owner}/${repository}/issue`, { cause: error });
 	}
 };
+
+export async function removeLabels(owner, repository, issue) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/issues/${issue}/labels`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'DELETE',
+	});
+
+	return request.json();
+};
