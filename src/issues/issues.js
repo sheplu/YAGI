@@ -41,3 +41,15 @@ export async function listIssues(owner, repository) {
 		throw new Error(`Error listing issues for ${owner}/${repository}`, { cause: error });
 	}
 };
+
+export async function getIssue(owner, repository, issue) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/issues/${issue}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
