@@ -142,6 +142,21 @@ export async function listLanguages(owner, repository) {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#check-if-private-vulnerability-reporting-is-enabled-for-a-repository
+ */
+export async function getVulnerabilityReporting(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/private-vulnerability-reporting`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-tags
  */
 export async function listTags(owner, repository) {
