@@ -69,6 +69,22 @@ export async function getTopics(owner, repository) {
 	return request.json();
 };
 
+export async function replaceTopics(owner, repository, topics) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/topics`;
+	const request = await fetch(url, {
+		body: {
+			names: topics,
+		},
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'POST',
+	});
+
+	return request.json();
+};
+
 export async function listContributors(owner, repository) {
 	try {
 		let page = BASE_COUNTER;
