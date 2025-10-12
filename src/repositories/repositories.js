@@ -61,6 +61,22 @@ export async function getRepository(owner, repository) {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#delete-a-repository
+ */
+export async function deteleRepository(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'DELETE',
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#check-if-dependabot-security-updates-are-enabled-for-a-repository
  */
 export async function getDependabot(owner, repository) {
