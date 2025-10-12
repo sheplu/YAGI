@@ -143,6 +143,21 @@ export async function listContributors(owner, repository) {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#check-if-immutable-releases-are-enabled-for-a-repository
+ */
+export async function getImmutableRelease(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/immutable-releases`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-languages
  */
 export async function listLanguages(owner, repository) {
