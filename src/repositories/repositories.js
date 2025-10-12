@@ -46,6 +46,23 @@ export async function listRepositories(owner) {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-an-organization-repository
+ */
+export async function createRepository(owner, repository) {
+	const url = `${GITHUB_URL}/orgs/${owner}/repos`;
+	const request = await fetch(url, {
+		body: repository,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'POST',
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
  */
 export async function getRepository(owner, repository) {
