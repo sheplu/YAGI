@@ -259,6 +259,7 @@ export async function getDependabot(owner, repository) {
 	return request.json();
 };
 
+// @Moved
 export async function getVulnerabilityReporting(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/private-vulnerability-reporting`;
 	const request = await fetch(url, {
