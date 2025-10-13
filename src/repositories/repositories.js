@@ -360,3 +360,39 @@ export async function replaceTopics(owner, repository, topics) {
 
 	return request.json();
 };
+
+/*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user
+ */
+export async function listUserRepositories(owner) {
+	try {
+		let page = BASE_COUNTER;
+		let continueLoop = true;
+		const repositories = [];
+
+		while (continueLoop) {
+			const url = `${GITHUB_URL}/users/${owner}/repos
+				?per_page=${GITHUB_PAGE_LENGTH}&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
+			const request = await fetch(url, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json',
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
+				},
+			});
+			// eslint-disable-next-line no-await-in-loop
+			const result = await request.json();
+
+			repositories.push(...result);
+			page = page + DEFAULT_INCREMENT;
+			if (result.length < GITHUB_PAGE_LENGTH) {
+				continueLoop = false;
+			}
+		}
+
+		return repositories;
+	} catch (error) {
+		logger.error(error);
+		throw new Error(`Error listing repositories for ${owner}`, { cause: error });
+	}
+};
