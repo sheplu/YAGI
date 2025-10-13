@@ -63,6 +63,21 @@ export async function createRepository(owner, repository) {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
+ */
+export async function getRepository(owner, repository) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
  */
 export async function updateRepository(owner, repository, update) {
@@ -74,21 +89,6 @@ export async function updateRepository(owner, repository, update) {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
 		},
 		method: 'PATCH',
-	});
-
-	return request.json();
-};
-
-/*
- * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
- */
-export async function getRepository(owner, repository) {
-	const url = `${GITHUB_URL}/repos/${owner}/${repository}`;
-	const request = await fetch(url, {
-		headers: {
-			Accept: 'application/vnd.github.v3+json',
-			Authorization: `Bearer ${GITHUB_TOKEN}`,
-		},
 	});
 
 	return request.json();
@@ -108,6 +108,44 @@ export async function deteleRepository(owner, repository) {
 	});
 
 	return request.json();
+};
+
+/*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-activities
+ */
+// eslint-disable-next-line max-statements
+export async function listActivities(owner, repository, query) {
+	try {
+		const queryString = new URLSearchParams(query).toString();
+		let page = BASE_COUNTER;
+		let continueLoop = true;
+		const contributors = [];
+
+		while (continueLoop) {
+			const url = `${GITHUB_URL}/repos/${owner}/${repository}/activity
+				?per_page=${GITHUB_PAGE_LENGTH}&page=${page}&${queryString}`;
+			// eslint-disable-next-line no-await-in-loop
+			const request = await fetch(url, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json',
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
+				},
+			});
+			// eslint-disable-next-line no-await-in-loop
+			const result = await request.json();
+
+			contributors.push(...result);
+			page = page + DEFAULT_INCREMENT;
+			if (result.length < GITHUB_PAGE_LENGTH) {
+				continueLoop = false;
+			}
+		}
+
+		return contributors;
+	} catch (error) {
+		logger.error(error);
+		throw new Error(`Error listing contributors for ${owner}/${repository}`, { cause: error });
+	}
 };
 
 /*
