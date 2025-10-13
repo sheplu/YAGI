@@ -63,6 +63,23 @@ export async function createRepository(owner, repository) {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
+ */
+export async function updateRepository(owner, repository, update) {
+	const url = `${GITHUB_URL}/orgs/${owner}/${repository}`;
+	const request = await fetch(url, {
+		body: update,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'PATCH',
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
  */
 export async function getRepository(owner, repository) {
