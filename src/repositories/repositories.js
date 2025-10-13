@@ -149,6 +149,23 @@ export async function listActivities(owner, repository, query) {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-an-attestation
+ */
+export async function createAttestation(owner, repository, attestation) {
+	const url = `${GITHUB_URL}/orgs/${owner}/${repository}/attestations`;
+	const request = await fetch(url, {
+		body: attestation,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'POST',
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#check-if-dependabot-security-updates-are-enabled-for-a-repository
  */
 export async function getDependabot(owner, repository) {
