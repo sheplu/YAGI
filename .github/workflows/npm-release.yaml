@@ -9,6 +9,7 @@ jobs:
     environment: prod
     permissions:
       contents: read
+      id-token: write
 
     steps:
       - name: Checkout
@@ -40,6 +41,4 @@ jobs:
           fi
 
       - name: publish
-        env:
-          NPM_TOKEN: ${{secrets.NPM_PUBLISH}}
         run: rm -rf node-module	.editorconfig tests .github package-lock.json && npm publish --access public
