@@ -398,6 +398,23 @@ export async function listAuthUserRepositories() {
 };
 
 /*
+ * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user
+ */
+export async function createRepositoryAuthUser(repository) {
+	const url = `${GITHUB_URL}/user/repos`;
+	const request = await fetch(url, {
+		body: repository,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'POST',
+	});
+
+	return request.json();
+};
+
+/*
  * @doc: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user
  */
 export async function listUserRepositories(owner) {
