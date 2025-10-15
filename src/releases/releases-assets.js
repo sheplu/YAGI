@@ -23,7 +23,7 @@ export async function getReleaseAsset(owner, repository, assetID) {
 /*
  * @doc: https://docs.github.com/en/rest/releases/assets?apiVersion=2022-11-28#update-a-release-asset
  */
-export async function updateRelease(owner, repository, assetID, asset) {
+export async function updateReleaseAsset(owner, repository, assetID, asset) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/assets/${assetID}`;
 	const request = await fetch(url, {
 		body: asset,
