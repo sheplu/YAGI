@@ -9,6 +9,9 @@ import {
 import { GITHUB_TOKEN } from '../utils/token.js';
 import { logger } from '../utils/logger.js';
 
+/*
+ * @doc: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#list-releases
+ */
 export async function listReleases(owner, repository) {
 	try {
 		let page = BASE_COUNTER;
@@ -76,6 +79,9 @@ export async function generateReleaseNotes(owner, repository, notes) {
 	return request.json();
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
+ */
 export async function getLatestRelease(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/latest`;
 	const request = await fetch(url, {
