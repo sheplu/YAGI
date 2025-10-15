@@ -83,3 +83,20 @@ export async function getRelease(owner, repository, release) {
 
 	return request.json();
 };
+
+/*
+ * @doc: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#update-a-release
+ */
+export async function updateRelease(owner, repository, releaseID, release) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/${releaseID}`;
+	const request = await fetch(url, {
+		body: release,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'PATCH',
+	});
+
+	return request.json();
+};
