@@ -59,6 +59,23 @@ export async function createRelease(owner, repository, release) {
 	return request.json();
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#generate-release-notes-content-for-a-release
+ */
+export async function generateReleaseNotes(owner, repository, notes) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/generate-notes`;
+	const request = await fetch(url, {
+		body: notes,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'POST',
+	});
+
+	return request.json();
+};
+
 export async function getLatestRelease(owner, repository) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/latest`;
 	const request = await fetch(url, {
