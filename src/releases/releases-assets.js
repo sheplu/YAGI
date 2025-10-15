@@ -19,3 +19,20 @@ export async function getReleaseAsset(owner, repository, assetID) {
 
 	return request.json();
 };
+
+/*
+ * @doc: https://docs.github.com/en/rest/releases/assets?apiVersion=2022-11-28#update-a-release-asset
+ */
+export async function updateRelease(owner, repository, assetID, asset) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/assets/${assetID}`;
+	const request = await fetch(url, {
+		body: asset,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'PATCH',
+	});
+
+	return request.json();
+};
