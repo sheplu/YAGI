@@ -100,3 +100,19 @@ export async function updateRelease(owner, repository, releaseID, release) {
 
 	return request.json();
 };
+
+/*
+ * @doc: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#delete-a-release
+ */
+export async function deleteRelease(owner, repository, releaseID) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/releases/${releaseID}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'DELETE',
+	});
+
+	return request.json();
+};
