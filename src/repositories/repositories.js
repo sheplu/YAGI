@@ -308,7 +308,7 @@ export async function listTags(owner, repository) {
 		return tags;
 	} catch (error) {
 		logger.error(error);
-		throw new Error(`Error listing tags for ${owner}`, { cause: error });
+		throw new Error(`Error listing tags for ${owner}/${repository}`, { cause: error });
 	}
 };
 
