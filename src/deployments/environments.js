@@ -9,6 +9,9 @@ import {
 import { GITHUB_TOKEN } from '../utils/token.js';
 import { logger } from '../utils/logger.js';
 
+/*
+ * @doc: https://docs.github.com/en/rest/deployments/environments?apiVersion=2022-11-28#list-environments
+ */
 export async function listEnvironments(owner, repository) {
 	try {
 		let page = BASE_COUNTER;
@@ -42,6 +45,9 @@ export async function listEnvironments(owner, repository) {
 	}
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/deployments/environments?apiVersion=2022-11-28#get-an-environment
+ */
 export async function getEnvironment(owner, repository, environment) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environment}`;
 	const request = await fetch(url, {
@@ -54,6 +60,9 @@ export async function getEnvironment(owner, repository, environment) {
 	return request.json();
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/deployments/environments?apiVersion=2022-11-28#create-or-update-an-environment
+ */
 export async function createOrUpdateEnvironment(owner, repository, environmentName, environment) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environmentName}`;
 	const request = await fetch(url, {
@@ -68,6 +77,9 @@ export async function createOrUpdateEnvironment(owner, repository, environmentNa
 	return request.json();
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/deployments/environments?apiVersion=2022-11-28#delete-an-environment
+ */
 export async function deleteEnvironment(owner, repository, environment) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environment}`;
 	const request = await fetch(url, {
