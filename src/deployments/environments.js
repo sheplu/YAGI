@@ -41,3 +41,15 @@ export async function listEnvironments(owner, repository) {
 		throw new Error(`Error listing environments for ${owner}/${repository}`, { cause: error });
 	}
 };
+
+export async function getEnvironment(owner, repository, environment) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environment}`;
+	const request = await fetch(url, {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+	});
+
+	return request.json();
+};
