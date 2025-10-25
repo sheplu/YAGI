@@ -54,6 +54,20 @@ export async function getEnvironment(owner, repository, environment) {
 	return request.json();
 };
 
+export async function createOrUpdateEnvironment(owner, repository, environmentName, environment) {
+	const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environmentName}`;
+	const request = await fetch(url, {
+		body: environment,
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+		},
+		method: 'DELETE',
+	});
+
+	return request.json();
+};
+
 export async function deleteEnvironment(owner, repository, environment) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environment}`;
 	const request = await fetch(url, {
