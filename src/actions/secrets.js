@@ -67,9 +67,9 @@ export async function listRepositorySecrets(owner, repository) {
 			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
-			secrets.push(...result);
+			secrets.push(...result.secrets);
 			page = page + DEFAULT_INCREMENT;
-			if (result.length < GITHUB_PAGE_LENGTH) {
+			if (result.secrets.length < GITHUB_PAGE_LENGTH) {
 				continueLoop = false;
 			}
 		}
