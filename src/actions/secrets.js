@@ -44,3 +44,40 @@ export async function listRepositorySecrets(owner, repository) {
 		throw new Error(`Error listing secrets for ${owner}/${repository}`, { cause: error });
 	}
 };
+
+/*
+ * @doc: https://docs.github.com/en/rest/actions/secrets?apiVersion=2022-11-28#list-environment-secrets
+ */
+export async function listEnvironmentSecrets(owner, repository, environment) {
+	try {
+		let page = BASE_COUNTER;
+		let continueLoop = true;
+		const secrets = [];
+
+		while (continueLoop) {
+			// eslint-disable-next-line @stylistic/max-len
+			const url = `${GITHUB_URL}/repos/${owner}/${repository}/environments/${environment}/secrets
+				?per_page=${GITHUB_PAGE_LENGTH}&page=${page}`;
+			// eslint-disable-next-line no-await-in-loop
+			const request = await fetch(url, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json',
+					Authorization: `Bearer ${GITHUB_TOKEN}`,
+				},
+			});
+			// eslint-disable-next-line no-await-in-loop
+			const result = await request.json();
+
+			secrets.push(...result);
+			page = page + DEFAULT_INCREMENT;
+			if (result.length < GITHUB_PAGE_LENGTH) {
+				continueLoop = false;
+			}
+		}
+
+		return secrets;
+	} catch (error) {
+		logger.error(error);
+		throw new Error(`Error listing secrets for ${owner}/${repository}`, { cause: error });
+	}
+};
