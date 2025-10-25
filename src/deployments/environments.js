@@ -31,9 +31,9 @@ export async function listEnvironments(owner, repository) {
 			// eslint-disable-next-line no-await-in-loop
 			const result = await request.json();
 
-			environments.push(...result);
+			environments.push(...result.environments);
 			page = page + DEFAULT_INCREMENT;
-			if (result.length < GITHUB_PAGE_LENGTH) {
+			if (result.environments.length < GITHUB_PAGE_LENGTH) {
 				continueLoop = false;
 			}
 		}
