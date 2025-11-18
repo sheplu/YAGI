@@ -9,7 +9,7 @@ import {
 import { GITHUB_TOKEN } from '../utils/token.js';
 import { logger } from '../utils/logger.js';
 
-export async function listAlertsRepository(owner, repository) {
+export async function listAlertsRepository(owner, repository, state = 'open') {
 	try {
 		let page = BASE_COUNTER;
 		let continueLoop = true;
@@ -17,7 +17,7 @@ export async function listAlertsRepository(owner, repository) {
 
 		while (continueLoop) {
 			const url = `${GITHUB_URL}/repos/${owner}/${repository}/dependabot/alerts
-				?per_page=${GITHUB_PAGE_LENGTH}&page=${page}`;
+				?per_page=${GITHUB_PAGE_LENGTH}&state=${state}`;
 			// eslint-disable-next-line no-await-in-loop
 			const request = await fetch(url, {
 				headers: {
