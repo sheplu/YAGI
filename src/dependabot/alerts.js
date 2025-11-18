@@ -9,6 +9,9 @@ import {
 import { GITHUB_TOKEN } from '../utils/token.js';
 import { logger } from '../utils/logger.js';
 
+/*
+ * @doc: https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-a-repository
+ */
 export async function listAlertsRepository(owner, repository, state = 'open') {
 	try {
 		let page = BASE_COUNTER;
@@ -42,6 +45,9 @@ export async function listAlertsRepository(owner, repository, state = 'open') {
 	}
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-an-organization
+ */
 export async function listAlertsOrganization(owner) {
 	try {
 		let page = BASE_COUNTER;
@@ -75,6 +81,9 @@ export async function listAlertsOrganization(owner) {
 	}
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-an-enterprise
+ */
 export async function listAlertsEnterprise(owner) {
 	try {
 		let page = BASE_COUNTER;
@@ -108,6 +117,9 @@ export async function listAlertsEnterprise(owner) {
 	}
 };
 
+/*
+ * @doc: https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#get-a-dependabot-alert
+ */
 export async function getAlert(owner, repository, alertId) {
 	const url = `${GITHUB_URL}/repos/${owner}/${repository}/dependabot/alerts/${alertId}`;
 	const request = await fetch(url, {
